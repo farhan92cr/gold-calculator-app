@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gold Calculator Return</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <meta name="theme-color" content="#fffbea" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+  <style>
+    body { font-family: sans-serif; background: #fffbea; padding: 20px; }
+    h2 { color: #b8860b; }
+    label, input { display: block; margin-top: 10px; }
+    input { padding: 8px; width: 100%; max-width: 300px; }
+    button { margin-top: 15px; padding: 10px 20px; background: #daa520; color: white; border: none; cursor: pointer; }
+    #result { margin-top: 20px; font-weight: bold; color: #444; }
+  </style>
+</head>
+<body>
+  <h2>📈 GGGGold Return Calculator</h2>
+
+  <label for="amount">Your Investment (Rs):</label>
+  <input type="number" id="amount" placeholder="e.g. 100000" />
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculate() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      if (!amount || amount <= 0) {
+        document.getElementById('result').innerText = "Please enter a valid amount.";
+        return;
+      }
+
+      const oneYearMin = amount * 1.15;
+      const oneYearMax = amount * 1.25;
+      const twoYearMin = amount * 1.25;
+      const twoYearMax = amount * 1.40;
+
+      document.getElementById('result').innerHTML = `
+        <p>📅 <b>1 Year:</b> Rs ${oneYearMin.toFixed(0)} – Rs ${oneYearMax.toFixed(0)}</p>
+        <p>📅 <b>2 Years:</b> Rs ${twoYearMin.toFixed(0)} – Rs ${twoYearMax.toFixed(0)}</p>
+      `;
+    }
+  </script>
+</body>
+</html>
+
