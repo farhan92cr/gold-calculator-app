@@ -1,0 +1,6 @@
+#Write a cloud build configuration file that builds a Progressive Web App (PWA) for a gold return calculator. The PWA should be built using the latest web standards and should include a service worker for offline capabilities. The build process should include steps to validate the manifest file, optimize images, and ensure the app is responsive across devices.
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
