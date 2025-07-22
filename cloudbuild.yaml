@@ -1,16 +1,5 @@
 options:
   logging: CLOUD_LOGGING_ONLY
 steps:
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
-    args:
-      - 'run'
-      - 'deploy'
-      - 'gold-calculator-service'
-      - '--source'
-      - '.'
-      - '--platform'
-      - 'managed'
-      - '--region'
-      - 'us-central1'
-      - '--allow-unauthenticated'
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['-m', 'rsync', '-r', '-c', '-d', '.', 'gs://gold-calculator-bucket/']
