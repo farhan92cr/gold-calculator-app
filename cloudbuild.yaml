@@ -1,8 +1,5 @@
 options:
   logging: CLOUD_LOGGING_ONLY
 steps:
-  - name: 'ubuntu'
-    args: ['echo', 'Hello from Cloud Build!']
-
-
-    
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['-m', 'rsync', '-r', '-c', '-d', '.', 'gs://gold-calculator-bucket/']
